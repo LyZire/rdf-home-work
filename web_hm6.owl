@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+    <!-- 動物metaclass -->
+    <owl:Class rdf:about="#Animal"/>
+
+    <!-- 狗是動物的子class -->
+    <owl:Class rdf:about="#Dog">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!-- 動物的屬性 -->
+    <rdf:Property rdf:about="#legs">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="#Color">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </rdf:Property>
+
+    <!-- 狗的顏色和腳的數量 -->
+    <rdf:Description rdf:about="#Dog">
+        <Color rdf:parseType="Collection">
+            <rdf:Description rdf:about="#black"/>
+            <rdf:Description rdf:about="#white"/>
+        </Color>
+        <legs rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</legs>
+    </rdf:Description>
+
+</rdf:RDF>
